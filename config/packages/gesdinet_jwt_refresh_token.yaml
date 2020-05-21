@@ -1,0 +1,6 @@
+# https://github.com/markitosgv/JWTRefreshTokenBundle
+
+gesdinet_jwt_refresh_token:
+    ttl: 2592000
+    user_identity_field: email
+    ttl_update: false
