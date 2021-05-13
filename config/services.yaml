@@ -26,9 +26,8 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
-    App\Swagger\SwaggerDecorator:
-        decorates: 'api_platform.swagger.normalizer.documentation'
-        arguments: ['@App\Swagger\SwaggerDecorator.inner']
+    App\Swagger\JWTDecorator:
+        decorates: 'api_platform.openapi.factory'
         autoconfigure: false
 
     App\Doctrine\HashPasswordListener:

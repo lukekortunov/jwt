@@ -6,9 +6,13 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     normalizationContext={"groups":{"user:read"}},
+ *     denormalizationContext={"groups":{"user:write"}}
+ * )
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
 class User implements UserInterface
@@ -22,6 +26,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Groups({"user:read", "user:write"})
      */
     private ?string $email;
 
@@ -31,8 +36,8 @@ class User implements UserInterface
     private array $roles = [];
 
     /**
-     * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Groups({"user:write"})
      */
     private ?string $password;
 

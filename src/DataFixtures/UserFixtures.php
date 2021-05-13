@@ -23,7 +23,7 @@ class UserFixtures extends Fixture
     }
 
 
-    public function dataProvider()
+    public function dataProvider(): iterable
     {
         yield ['email@email1.test', ['ROLES_ADMIN'], 'email@email1.test'];
         yield ['email@email2.test', ['ROLES_ADMIN'], 'email@email2.test'];

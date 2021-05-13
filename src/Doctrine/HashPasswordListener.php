@@ -16,7 +16,7 @@ class HashPasswordListener implements EventSubscriber
         $this->encoder = $encoder;
     }
 
-    public function getSubscribedEvents()
+    public function getSubscribedEvents(): array
     {
         return ['prePersist', 'preUpdate'];
     }
